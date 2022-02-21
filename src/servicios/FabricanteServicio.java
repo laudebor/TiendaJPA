@@ -42,4 +42,10 @@ public class FabricanteServicio {
     public void eliminarFabricanteId(String id){
         dao.eliminarFabricanteporId(id);
     }
+    
+    public void imprimirNombresFabricantes(){
+        for(String aux : dao.listarNombresFabricantes()){
+            System.out.println(aux.toString());
+        }
+    }
 }

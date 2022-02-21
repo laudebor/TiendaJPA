@@ -3,8 +3,6 @@ package persistencia;
 import entidades.Fabricante;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import static javax.swing.text.html.HTML.Tag.SELECT;
 
 public final class FabricanteDAO extends DAO{
   
@@ -45,5 +43,17 @@ public final class FabricanteDAO extends DAO{
              throw e;
          }
          
+     }
+     
+     public List<String> listarNombresFabricantes(){
+         try{
+             conectar();
+             List<String> nombres = em.createQuery("SELECT f.nombre FROM Fabricante f").getResultList();
+             desconectar();
+             return nombres;
+         }catch(Exception e){
+             System.out.print("Error en listarNombresFabricantes de FabricanteDAO");
+             throw e;
+         }
      }
 }
